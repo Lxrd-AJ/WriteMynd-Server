@@ -3,18 +3,25 @@
 import * as Express from 'express';
 import * as Parse_Server from 'parse-server';
 
+import {ParseConfig} from './parse.config';
+
 const App = Express()
 const ParseServer = Parse_Server.ParseServer;
 const API = new ParseServer({
-    databaseURI: "mongodb://localhost:27017/writemynd",
-    appId: 'rJrwXVeierGtuubX09tjfFY8lNA/dcuniTH0EdHbAhE=',
-    masterKey: 'RuTGnR7AhxxHXpditH+l0SGBQ4aRDNmi3gWgBaaFPKc=',
-    fileKey: 'NNl+HXmEA6dkXFSupHcd9/xz5s5fuICA/2GZKLtqkWE=',
-    serverURL: 'http://localhost:8000/parse'
-})
+    databaseURI: ParseConfig.databaseURI,
+    appId: ParseConfig.appId,
+    masterKey: ParseConfig.masterKey,
+    fileKey: ParseConfig.fileKey,
+    serverURL: ParseConfig.serverURL,
+    cloud: ParseConfig.cloud
+});
 
 App.use('/parse', API);
 
 App.listen(8000, () => {
     console.log("Application started...")
 })
+
+
+// * ParseServer on the Endurance
+// * Database setup on mLab
