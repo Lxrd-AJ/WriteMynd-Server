@@ -1,3 +1,6 @@
 npm install && typings install
 tsc
-pm2 start .build/index.js --name "Endurance"
+cd Webapp/ && npm install
+npm deploy
+cd ../
+pm2 start .build/index.js -f --name  "Endurance"

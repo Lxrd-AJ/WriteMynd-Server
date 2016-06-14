@@ -5,6 +5,11 @@ var path = require('path');
 
 gulp.task("default", ["build","watch-webapp"]);
 
+gulp.task("deploy", () => {
+    gulp.start("build");
+    gulp.start("move-node_modules");
+})
+
 gulp.task("watch-webapp", () => {
     watch('./**/*', () => {
         gulp.start("build");
