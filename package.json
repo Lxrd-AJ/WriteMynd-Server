@@ -9,8 +9,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.15.1",
     "express": "^4.13.4",
     "mongodb-runner": "^3.3.2",
-    "parse-server": "^2.2.11"
+    "mongoose": "^4.4.20",
+    "morgan": "^1.7.0",
+    "parse-server": "^2.2.11",
+    "q": "^1.4.1",
+    "request": "^2.72.0",
+    "serve-static": "^1.11.0"
   }
 }
