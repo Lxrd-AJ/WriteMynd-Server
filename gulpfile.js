@@ -15,5 +15,5 @@ gulp.task("move-files", () => {
         "./**/*.js",
         "!./node_modules/**",
         "!./typings/**"
-    ]).pipe(gulp.dest('./../.build'));
+    ]).pipe(gulp.dest('./.build'));
 })

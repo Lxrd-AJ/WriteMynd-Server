@@ -1,4 +1,5 @@
 npm install && typings install
+gulp move-files
 tsc
 cd Webapp/ && npm install
 npm deploy
