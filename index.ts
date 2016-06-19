@@ -50,8 +50,3 @@ Server.listen(8000, () => {
     console.log("Application started  ...")
 })
 
-
-/**
- *- todo
- *      [ ] Create a table of banned users and check on the table after login to confirm login 
- */
