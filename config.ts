@@ -24,6 +24,9 @@ interface _Config {
         database: string,
         user: string,
         pwd: string
+    },
+    mailgun: {
+        apiKey: string
     }
 }
 
@@ -35,5 +38,8 @@ export const Config: _Config = {
             user: "mr_robot",
             pwd: "enterTheDragon"
         }
+    },
+    mailgun: {
+        apiKey: 'key-73fcba279df87ec8fa54217db8136a42'
     }
 }

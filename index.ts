@@ -23,7 +23,18 @@ const API = new ParseServer({
     masterKey: ParseConfig.masterKey,
     fileKey: ParseConfig.fileKey,
     serverURL: ParseConfig.serverURL,
-    cloud: ParseConfig.cloud
+    cloud: ParseConfig.cloud,
+    publicServerURL: 'http://178.62.103.146:8000/parse',
+    appName: 'WriteMynd',
+    verbose: true,
+    emailAdapter: {
+        module: 'parse-server-simple-mailgun-adapter',
+        options: {
+            fromAddress: "endurance@writemynd.com",
+            domain: "sandbox963dc52c48f341a1b8fdc56469236547.mailgun.org",
+            apiKey: Config.mailgun.apiKey
+        }
+    }
 });
 
 Mongoose.connect(databaseURI);
@@ -46,7 +57,7 @@ App.get("/", (req, res) => {
     res.sendFile( __dirname + "/Webapp/index.html" )
 })
 
+//- todo: Use port 80 instead
 Server.listen(8000, () => {
     console.log("Application started  ...")
 })
-
