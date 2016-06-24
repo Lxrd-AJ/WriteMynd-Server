@@ -24,14 +24,14 @@ const API = new ParseServer({
     fileKey: ParseConfig.fileKey,
     serverURL: ParseConfig.serverURL,
     cloud: ParseConfig.cloud,
-    publicServerURL: 'http://178.62.103.146:8000/parse',
+    publicServerURL: 'http://178.62.103.146:80/parse',
     appName: 'WriteMynd',
-    //verbose: true,
+    verbose: true,
     emailAdapter: {
         module: 'parse-server-simple-mailgun-adapter',
         options: {
             fromAddress: "hello@writemynd.com",
-            domain: "support.getwritemind.com", //writemynd.com
+            domain: "support.getwritemind.com", 
             apiKey: Config.mailgun.apiKey
         }
     }
@@ -52,12 +52,10 @@ App.use(BodyParser.urlencoded({ extended: true }));
 const Server = Http.createServer(App);
 const router = new Router(App);
 
-
 App.get("/", (req, res) => {
     res.sendFile( __dirname + "/Webapp/index.html" )
 })
 
-//- todo: Use port 80 instead
-Server.listen(8000, () => {
+Server.listen(80, () => {
     console.log("Application started  ...")
 })
