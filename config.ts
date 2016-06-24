@@ -13,9 +13,9 @@ export const ParseConfig : _ParseConfig = {
     appId: "rJrwXVeierGtuubX09tjfFY8lNAdcuniTH0EdHbAhE",
     masterKey: "RuTGnR7AhxxHXpditH+l0SGBQ4aRDNmi3gWgBaaFPKc",
     fileKey: "NNl+HXmEA6dkXFSupHcd9xz5s5fuICA2GZKLtqkWE",
-    serverURL: "http://localhost:80/parse",
+    serverURL: "http://localhost:8080/parse",
     cloud: "./WriteMyndCloud/cloud/main.js",
-    port: 80
+    port: 8080
 }
 
 interface _Config {

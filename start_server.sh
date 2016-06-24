@@ -4,4 +4,4 @@ tsc
 cd Webapp/ && npm install
 gulp deploy
 cd ../
-pm2 start .build/index.js -f --name  "Endurance"
+sudo pm2 start .build/index.js -f --name  "Endurance++"
