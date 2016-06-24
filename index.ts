@@ -26,12 +26,12 @@ const API = new ParseServer({
     cloud: ParseConfig.cloud,
     publicServerURL: 'http://178.62.103.146:8000/parse',
     appName: 'WriteMynd',
-    verbose: true,
+    //verbose: true,
     emailAdapter: {
         module: 'parse-server-simple-mailgun-adapter',
         options: {
-            fromAddress: "endurance@writemynd.com",
-            domain: "sandbox963dc52c48f341a1b8fdc56469236547.mailgun.org",
+            fromAddress: "hello@writemynd.com",
+            domain: "support.getwritemind.com", //writemynd.com
             apiKey: Config.mailgun.apiKey
         }
     }
