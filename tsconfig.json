@@ -12,6 +12,6 @@
         "node_modules",
         "typings/browser.d.ts",
         "Webapp",
-        "./.build/Webapp/*"
+        ".build"
     ]
 }

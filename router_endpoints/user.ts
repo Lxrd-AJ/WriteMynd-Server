@@ -1,5 +1,7 @@
 import * as Ex from 'express';
+import * as Fs from 'fs';
 
+import {IUser, User} from './../models/user';
 import {BlockedUser,IBlockedUser} from './../models/blocked_user';
 
 export module UserHandler {
@@ -10,6 +12,9 @@ export module UserHandler {
         })
     }
 
+    /**
+     *Checks if a user is blocked in the system
+     *  */
     export function isUserBlocked(req: Ex.Request, res: Ex.Response) {
         const id = req.query.userID
         console.log("UserID " + id);
@@ -17,5 +22,18 @@ export module UserHandler {
             if (result) { res.status(200).json({ "result": true }) }
             else{ res.status(200).json({ "result":false }) }
         })
+    }
+
+    /**
+     * Returns all users who have email addresses */
+    export function getUsersCSV(req: Ex.Request, res: Ex.Response) {
+        User.find({ "email": {$exists:true}}).exec().then((users) => {
+            const stream = Fs.createWriteStream('data_dir/emails.xslx');
+            users.forEach((user) => stream.write(`${user.email}\n`))
+            stream.end();
+            stream.on('finish', () => {
+                Fs.createReadStream('data_dir/emails.xslx').pipe(res);
+            })
+        });
     }
 }

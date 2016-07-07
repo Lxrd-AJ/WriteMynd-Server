@@ -1,4 +1,4 @@
-
+const PORT = 8080;
 
 interface _ParseConfig {
     databaseURI?: string,
@@ -7,15 +7,23 @@ interface _ParseConfig {
     fileKey: string,
     serverURL: string,
     cloud: string,
-    port: number
+    port: number,
+    publicServerIP: () => string
 }
 export const ParseConfig : _ParseConfig = {
     appId: "rJrwXVeierGtuubX09tjfFY8lNAdcuniTH0EdHbAhE",
     masterKey: "RuTGnR7AhxxHXpditH+l0SGBQ4aRDNmi3gWgBaaFPKc",
     fileKey: "NNl+HXmEA6dkXFSupHcd9xz5s5fuICA2GZKLtqkWE",
-    serverURL: "http://localhost:8080/parse",
+    serverURL: `http://localhost:${PORT}/parse`,
     cloud: "./WriteMyndCloud/cloud/main.js",
-    port: 8080
+    port: PORT,
+    publicServerIP: () => {
+        if (process['NODE_ENV'] === 'production') {
+            return "178.62.103.146"
+        } else {
+            return "localhost"
+        }
+    }
 }
 
 interface _Config {
@@ -27,7 +35,8 @@ interface _Config {
     },
     mailgun: {
         apiKey: string
-    }
+    },
+    port: number
 }
 
 export const Config: _Config = {
@@ -41,5 +50,6 @@ export const Config: _Config = {
     },
     mailgun: {
         apiKey: 'key-73fcba279df87ec8fa54217db8136a42'
-    }
+    },
+    port: PORT
 }

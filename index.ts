@@ -24,7 +24,7 @@ const API = new ParseServer({
     fileKey: ParseConfig.fileKey,
     serverURL: ParseConfig.serverURL,
     cloud: ParseConfig.cloud,
-    publicServerURL: 'http://178.62.103.146:8080/parse',
+    publicServerURL: `http://${ParseConfig.publicServerIP()}:${Config.port}/parse`,
     appName: 'WriteMynd',
     verbose: true,
     emailAdapter: {
@@ -56,6 +56,6 @@ App.get("/", (req, res) => {
     res.sendFile( __dirname + "/Webapp/index.html" )
 })
 
-Server.listen(8080, () => {
+Server.listen(Config.port, () => {
     console.log("Application started  ...")
 })

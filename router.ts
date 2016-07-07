@@ -9,5 +9,6 @@ export class Router {
         app.route("/block_user").post(UserHandler.blockUser);
         app.route("/is_user_blocked").get(UserHandler.isUserBlocked);
         app.route("/allow_post").post(PostsHandler.allowReportedPost);
+        app.route("/user_emails").get(UserHandler.getUsersCSV);
     }    
 }
