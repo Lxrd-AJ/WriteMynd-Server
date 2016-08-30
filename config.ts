@@ -41,11 +41,20 @@ interface _Config {
 
 export const Config: _Config = {
     db: () => {
-        return {
-            host: "127.0.0.1", //178.62.103.146
-            database: "writemynd",
-            user: "mr_robot",
-            pwd: "enterTheDragon"
+        if (process['NODE_ENV'] === 'production') {
+            return {
+                host: "178.62.103.146",
+                database: "writemynd",
+                user: "mr_robot",
+                pwd: "enterTheDragon"
+            }
+        } else {
+            return {
+                host: "127.0.0.1", //178.62.103.146
+                database: "writemynd",
+                user: "mr_robot",
+                pwd: "enterTheDragon"
+            }
         }
     },
     mailgun: {

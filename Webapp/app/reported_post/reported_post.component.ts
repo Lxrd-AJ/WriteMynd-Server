@@ -1,3 +1,8 @@
+/**
+ * - todo:
+ *      [ ] Refactor into an app module
+ */
+
 import { Component, OnInit } from '@angular/core';
 import {Http,Response,Headers,RequestOptions} from '@angular/http';
 // import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
@@ -6,7 +11,6 @@ import {PostService} from './../post.service'
 
 @Component({
     selector: "reported-post",
-    directives: [], //MD_CARD_DIRECTIVES,MD_LIST_DIRECTIVES
     template: `
         <h1>Reported Posts</h1>
         <div class="row">
@@ -40,11 +44,12 @@ export class ReportedPostsComponent implements OnInit{
     constructor(private postService: PostService, private http: Http) { }
 
     ngOnInit() { 
-        this.http.get('/reported_posts').subscribe(res => {
-            this.reportedPosts = res.json()            
+        this.postService.getReportedPosts().then((posts) => {
+            this.reportedPosts = posts;
         })
     }
 
+    //todo: Migrate to a service    
     deleteUser(userID: string) {
         //console.log(userID);
         this.http.post('/block_user', JSON.stringify({ userID: userID }), this.options).subscribe(
@@ -52,6 +57,7 @@ export class ReportedPostsComponent implements OnInit{
         )
     }
 
+    //todo: Migrate to a service    
     allowPost(postID: string) {
         console.log(postID);
         this.http.post(`/allow_post?postID=${postID}`, "", this.options).subscribe(

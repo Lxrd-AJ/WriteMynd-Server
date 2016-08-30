@@ -1,3 +1,5 @@
+echo "Creating Backup of current server build"
+cp -rf .build/ ../temp_build/
 npm install && typings install
 gulp move-files
 tsc

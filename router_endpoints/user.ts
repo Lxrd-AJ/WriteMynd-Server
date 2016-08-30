@@ -28,11 +28,11 @@ export module UserHandler {
      * Returns all users who have email addresses */
     export function getUsersCSV(req: Ex.Request, res: Ex.Response) {
         User.find({ "email": {$exists:true}}).exec().then((users) => {
-            const stream = Fs.createWriteStream('data_dir/emails.xslx');
+            const stream = Fs.createWriteStream('data_dir/emails.csv');
             users.forEach((user) => stream.write(`${user.email}\n`))
             stream.end();
             stream.on('finish', () => {
-                Fs.createReadStream('data_dir/emails.xslx').pipe(res);
+                Fs.createReadStream('data_dir/emails.csv').pipe(res);
             })
         });
     }

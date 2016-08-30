@@ -13,7 +13,9 @@ import {Router} from './router';
 import {IUser, User} from './models/user';
 import {IPost, Post} from './models/post';
 
-const databaseURI = `mongodb://${Config.db().user}:${Config.db().pwd}@${Config.db().host}/${Config.db().database}`
+const databaseURI = `mongodb://${Config.db().user}:${Config.db().pwd}@${Config.db().host}/${Config.db().database}`;
+// console.log(databaseURI);
+// console.log(`NODE_ENV = ${process['NODE_ENV']}`);
 const App = Express()
 const ParseServer = Parse_Server.ParseServer;
 const Connection = Mongoose.connection;
